@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доходы и расходы</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    
+
+    <style>
+        .container,
+        label,
+        button {
+            margin-top: 1em;
+            max-width: 1000px;
+        }
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+
+            <form class="form-signin" action="" method="POST">
+                <h3 class="form-signin-heading">Расчёт бюджета</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="minus" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="plus">
+                      Доход
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="minus" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="minus">
+                      Расход
+                    </label>
+                <br>
+                <label>Сумма : </label>
+                <input type="text" name="summ" class="form-control" placeholder="Сумма">
+
+                <label>Коментарий : </label>
+                <input type="text" name="info" class="form-control" placeholder="Info">
+                <label for="date">Дата : </label>
+                <input type="date" name="dt" id="date" value="{{ now }}" min='2004-03-11' max="2100-12-30">
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
+                
+                
+            </form>
+
+            <hr>
+            <p>
+                BALANCE: {{ balance }}
+            </p>
+            <br><br>
+            <p><a href="{{ url_for('history',login=login) }}">Show history</a></p>
+        </div>
+    </div> <!-- /container -->
+</body>
+
+</html>
