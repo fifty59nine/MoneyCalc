@@ -5,53 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <title>test</title>
+    <title>Test =)</title>
 </head>
 <body>
-    <div id="container" style="margin-top: 200px;">
-        <select id="select1"style="width:200px;" onchange="arrangeSelects(this)">
-            <option class="1">Маяковского</option>
-            <option class="2">Мечникова</option>
-            <option class="3">Каштанова</option>
-        </select>
-        <select id="select2" style="display: none;">
-            <option class="1#1">Вода-m</option>
-            <option class="1#2">Электричество-m</option>
-            <option class="2#1">Вода-i</option>
-            <option class="2#2">Электричество-i</option>
-            <option class="3#1">Вода-k</option>
-            <option class="3#2">Электричество-k</option>
-        </select>
-        <select id="select3" style="display: none;">
-            <option class="1#1#1">Вода-m</option>
-            <option class="1#1#2">Электричество-m</option>
-            <option class="1#2#1">Вода-m</option>
-            <option class="1#2#2">Электричество-m</option>
-            <option class="2#1#1">Вода-i</option>
-            <option class="2#1#2">Электричество-i</option>
-            <option class="2#2#1">Вода-i</option>
-            <option class="2#2#2">Электричество-i</option>
-            <option class="3#1#1">Вода-k</option>
-            <option class="3#1#2">Электричество-k</option>
-            <option class="3#2#1">Вода-k</option>
-            <option class="3#2#2">Электричество-k</option>
-        </select>
-    </div>
+        <div id="container" style="margin: 2em;">
+            <select id="select1" style="width:200px;" onchange="selectAddress(this)">
+                <option class="1">Маяковского</option>
+                <option class="2">Мечникова</option>
+                <option class="3">Каштанова</option>
+            </select>
+            <select id="select2">
+                <option class="1#1">Вода-m</option>
+                <option class="1#2">Электричество-m</option>
+            </select>
+            <select id="select3">
+                <option class="2#1">Вода-i</option>
+                <option class="2#2">Электричество-i</option>
+            </select>
+            <select id="select4">
+                <option class="3#1">Вода-k</option>
+                <option class="3#2">Электричество-k</option>
+            </select>
+            <select id="select999" style="display:none">
+                <option class="1#1#1">Вода-m</option>
+                <option class="1#1#2">Электричество-m</option>
+                <option class="1#2#1">Вода-m</option>
+                <option class="1#2#2">Электричество-m</option>
+                <option class="2#1#1">Вода-i</option>
+                <option class="2#1#2">Электричество-i</option>
+                <option class="2#2#1">Вода-i</option>
+                <option class="2#2#2">Электричество-i</option>
+                <option class="3#1#1">Вода-k</option>
+                <option class="3#1#2">Электричество-k</option>
+                <option class="3#2#1">Вода-k</option>
+                <option class="3#2#2">Электричество-k</option>
+            </select>
+        </div>
+
     <script>
+
+        let sel=new Array()
+
+        let selectAddress = function(selector){
+
+            switch(selector.selectedIndex){
+                case 0 :
+                    sel[2].style.display = 'inline';
+                    sel[3].style.display = 'none';
+                    sel[4].style.display = 'none';
+                    break;
+                case 1 :
+                    sel[2].style.display = 'none';
+                    sel[3].style.display = 'inline';
+                    sel[4].style.display = 'none';
+                    break;         
+                case 2 :
+                    sel[2].style.display = 'none';
+                    sel[3].style.display = 'none';
+                    sel[4].style.display = 'inline';
+                    break;   
+                default:
+                    break;             
+            }
+        }
+
         window.onload=function(){
+
             var ind=3
+
             con=document.getElementById('container')
-            sel=new Array()
+            
             sel[1] = document.getElementById('select1')
             sel[2] = document.getElementById('select2')
             sel[3] = document.getElementById('select3')
-            sel[1].options[ind-1].selected=true
+            sel[4] = document.getElementById('select4')
+            //sel[1].options[ind-1].selected=true
 
-            arrangeSelects(sel[1])
+            sel[2].style.display = 'none';
+            sel[3].style.display = 'none';
+            sel[4].style.display = 'none';
+
+
+            // arrangeSelects(sel[1])
         }
+
         function arrangeSelects(obj){
             var val = obj.options[obj.selectedIndex].className
             var ar = val.split('#')
